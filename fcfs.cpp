@@ -19,6 +19,10 @@ bool compArrivalTime(process first, process second){
         return first.pid < second.pid;
 }
 
+bool compPID(process first, process second){
+    return first.pid < second.pid;
+}
+
 void printTable(process processes[], int size){
     cout << "\nPID AT BT CT TAT WT RT\n"; 
     for(int elem = 0; elem < size; elem++)
@@ -42,6 +46,7 @@ void fcfs(process processes[], int size){
         processes[elem].wt = processes[elem].tat - processes[elem].bt;
         processes[elem].rt = processes[elem].wt;
     }
+    sort(processes, processes + size, compPID);
 }
 
 int main(){
