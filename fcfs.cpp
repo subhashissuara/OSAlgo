@@ -30,12 +30,19 @@ void printTable(process processes[], int size){
 }
 
 void fcfs(process processes[], int size){
-    int total = 0;
+    int total = 0, cpuLag = 0;
     sort(processes, processes + size, compArrivalTime);
 
     for(int elem = 0; elem < size; elem++){
+        if(processes[elem].at != elem) {
+            if(elem == 0)
+                cpuLag = processes[elem].at;
+            else
+                if(processes[elem].at - 1 != processes[elem - 1].at)
+                    cpuLag = abs(processes[elem].at - processes[elem - 1].at);
+        }
         total += processes[elem].bt;
-        processes[elem].ct = total;
+        processes[elem].ct = total  + cpuLag;
     }
 
     for(int elem = 0; elem < size; elem++){
