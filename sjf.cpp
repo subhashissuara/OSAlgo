@@ -35,7 +35,7 @@ bool compPID(process first, process second){
 void printTable(process processes[], int size){
     cout << "\nPID AT BT CT TAT WT RT\n"; 
     for(int elem = 0; elem < size; elem++)
-        cout << "P" << processes[elem].pid << "  " << processes[elem].at << "  " << processes[elem].bt << "  " << processes[elem].ct << "  " << processes[elem].tat << "  " << processes[elem].wt << "  " << processes[elem].rt << "\n";
+        cout << "P" << processes[elem].pid + 1 << "  " << processes[elem].at << "  " << processes[elem].bt << "  " << processes[elem].ct << "  " << processes[elem].tat << "  " << processes[elem].wt << "  " << processes[elem].rt << "\n";
 }
 
 void sjf(process processes[], int size){
